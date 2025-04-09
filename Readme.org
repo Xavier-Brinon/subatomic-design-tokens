@@ -1,0 +1,55 @@
+#+title: Subatomic: The complete guide to design tokens
+#+date: [2025-04-09 Wed]
+#+description: Course about creating and managing design systems
+#+startup: indent
+#+auto_tangle: t
+# #+property: header-args :results output
+
+* Org mode
+- tangle :: ~org-babel-tangle~, ~C-c C-v C-t~
+
+* Core concepts
+
+** Definition
+#+begin_quote
+Design tokens are design properties stored as variables that help create
+themeable user interfaces.
+#+end_quote
+
+#+begin_src css
+  /* From */
+  button {
+      background-color: #aabbcc;
+  }
+  /* To */
+  button {
+      background-color: var(--ds-theme-color-background-brand);
+  }
+#+end_src
+
+** Workflow
+Creating a button, or updating the color and font:
+- Plan :: define work to be done
+- Design :: visual/UX design, create assets in design tool
+- Review :: review with stakeholders, make some rounds of back and forth
+- Build :: create HTML, CSS, and JS, create component API
+- Test & QA :: a11y, content, functionality, responsive, cross-browser/device, i18n, unit tests, visual regression tests, stories, code review, design review
+- Publish :: make the component available
+- Adopt :: consuming app imports component, wires up to product context/content/backend/etc..
+- Launch :: app publishes product work with component
+- Maitain :: bug fixes, style tweaks, post-launch changes
+
+** Separation of concerns
+Before, it was just about:
+- HML :: structure of the document
+- CSS :: style of the document
+- JS :: behaviour of the document
+
+Now, it's more *component system* vs *design token*
+- Component system:
+  - HTML :: Structure
+  - CSS :: Structural style
+  - JS :: Behaviour
+- Design token
+  - CSS :: Aesthetic style
+
