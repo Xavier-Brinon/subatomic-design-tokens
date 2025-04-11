@@ -1,0 +1,17 @@
+:root {
+    --pink: #ea0a8e;
+}
+
+button {
+    background-color: var(--pink);
+    color: white;
+    padding: 2rem 4rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--pink);
+    font-family: sans-serif;
+}

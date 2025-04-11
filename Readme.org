@@ -63,12 +63,90 @@ Now, it's more *component system* vs *design token*
 Design tokens are the design decisions stored in variables. They are
 style properties stored as variables and serve as the implementation
 agnostic source of truth for a design language.
-They can be:
-|--------------------+-----------------+---------------------|
-| colour             | typography      | other               |
-|--------------------+-----------------+---------------------|
-| background colours | font properties | border properties   |
-| text colours       | line propertios | shadows             |
-| border colours     | letter spacing  | size/spacing values |
-| icon colours       | text transforms | animation values    |
-|--------------------+-----------------+---------------------|
+They can be, in rough scopes:
+- Colours
+- Typography
+- Spacing
+- the rest:
+  - border
+  - shadow
+  - animation
+  - breakpoints
+  - z-index
+
+
+** MVP Token
+The most basic token:
+#+name: basic html page
+#+begin_src html :tangle basic.html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="basic-tier2.css">
+      <title>Basic HTML Page</title>
+  </head>
+  <body>
+      <h1>Heading</h1>
+      <button>Action</button>
+  </body>
+  </html>
+#+end_src
+
+#+name: basic (tier 1) css
+#+begin_src css :tangle basic-tier1.css
+  :root {
+      --pink: #ea0a8e;
+  }
+
+  button {
+      background-color: var(--pink);
+      color: white;
+      padding: 2rem 4rem;
+      border: none;
+      font-size: 2rem;
+      font-weight: bold;
+  }
+
+  h1 {
+      color: var(--pink);
+      font-family: sans-serif;
+  }
+#+end_src
+
+This is *Tier one* variable because the variable is the name of the
+colour directly. If you change the value of that variable to a blue
+colour, you have a variable pink encoding a blue colour. Best case is
+that you have to rename that token to match the name of the new
+colour.
+
+*Tier two* would encode the role of that token instead. You would name
+ the token =brand= instead of =pink=, because this pink colour is the
+ current brand colour.
+
+#+name: basic (tier 2) css
+#+begin_src css :tangle basic-tier2.css
+  :root {
+      /* Tier 1: Definition */
+      --pink: #ea0a8e;
+      --blue: #0004fb;
+
+      /* Tier 2: Semantic */
+      --brand: var(--pink);
+  }
+
+  button {
+      background-color: var(--brand);
+      color: white;
+      padding: 2rem 4rem;
+      border: none;
+      font-size: 2rem;
+      font-weight: bold;
+  }
+
+  h1 {
+      color: var(--brand);
+      font-family: sans-serif;
+  }
+#+end_src

@@ -1,0 +1,22 @@
+:root {
+    /* Tier 1: Definition */
+    --pink: #ea0a8e;
+    --blue: #0004fb;
+
+    /* Tier 2: Semantic */
+    --brand: var(--pink);
+}
+
+button {
+    background-color: var(--brand);
+    color: white;
+    padding: 2rem 4rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--brand);
+    font-family: sans-serif;
+}
