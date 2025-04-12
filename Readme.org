@@ -76,6 +76,7 @@ They can be, in rough scopes:
 
 
 ** MVP Token
+*** Tier one
 The most basic token:
 #+name: basic html page
 #+begin_src html :tangle basic.html
@@ -121,6 +122,7 @@ colour, you have a variable pink encoding a blue colour. Best case is
 that you have to rename that token to match the name of the new
 colour.
 
+*** Tier two
 *Tier two* would encode the role of that token instead. You would name
  the token =brand= instead of =pink=, because this pink colour is the
  current brand colour.
@@ -138,6 +140,37 @@ colour.
 
   button {
       background-color: var(--brand);
+      color: white;
+      padding: 2rem 4rem;
+      border: none;
+      font-size: 2rem;
+      font-weight: bold;
+  }
+
+  h1 {
+      color: var(--brand);
+      font-family: sans-serif;
+  }
+#+end_src
+
+*** Tier three
+*Tier three* is refining the style at the component level.
+#+name: basic (tier 3) css
+#+begin_src css :tangle basic-tier3.css
+  :root {
+      /* Tier 1: Definition */
+      --pink: #ea0a8e;
+      --blue: #0004fb;
+
+      /* Tier 2: Semantic */
+      --brand: var(--pink);
+
+      /* Tier 3: Component */
+      --button-background: var(--blue);
+  }
+
+  button {
+      background-color: var(--button-background);
       color: white;
       padding: 2rem 4rem;
       border: none;
